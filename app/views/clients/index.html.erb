@@ -1,0 +1,43 @@
+<style>
+  h1 {
+    text-align: center;
+  }
+</style>
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Clientes</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">N° Ordenes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <th scope="row"> <%= client.id %> </th>
+        <td> <%= client.nombre %> </td>
+        <td> <%= client.email %> </td>
+        
+          <% if client.products.present? %>
+            <td> <%= client.products.count %> </td>
+          <% else %>
+            <td>No tiene ordenes</td>
+          <% end %>
+
+        <td><%= link_to "Mostrar cliente", client, class:"btn btn-outline-dark btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div style="display: flex; justify-content: center; margin-bottom: 20px;">
+  <%= link_to "Añadir nuevo cliente", new_client_path, class: "btn btn-outline-dark btn-m" %>
+</div>
+<%= will_paginate @clients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+

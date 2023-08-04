@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  monto: MyString
+  fechaorden: MyString
+  product: one
+  client: one
+
+two:
+  monto: MyString
+  fechaorden: MyString
+  product: two
+  client: two
